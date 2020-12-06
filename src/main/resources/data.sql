@@ -7,10 +7,10 @@ VALUES
        ('Olga Tarasova', 'Human resources')
        ;
 
-INSERT INTO time_tracking (id_employee, hours_worked)
-VALUES  ( 1, 8 ),
-        ( 2, 8 ),
-        ( 3, 8 ),
-        ( 4, 8 ),
-        ( 5, 8 )
+INSERT INTO time_tracking (date, id_employee, arrival_time, leaving_time, hours_worked)
+VALUES  ( '2020-12-05', 1, '09:00:00', '18:00:00', 8 ),
+        ( '2020-12-05', 2, '09:00:00', '18:00:00', 8 ),
+        ( '2020-12-05', 3, '09:00:00', '18:00:00', 8 ),
+        ( '2020-12-05', 4, '09:00:00', '18:00:00', 8 ),
+        ( '2020-12-05', 5, '09:00:00', '18:00:00', 8 )
 ;

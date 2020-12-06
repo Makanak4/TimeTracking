@@ -23,9 +23,14 @@ public class TimeTrackController {
         return manager.getById(id);
     }
 
-    @PostMapping
-    public TimeTrack save(@RequestBody TimeTrack item) {
-        return manager.save(item);
+    @PostMapping("/arrival")
+    public TimeTrack saveArrivalTime(@RequestBody TimeTrack item) {
+        return manager.saveArrivalTime(item);
+    }
+
+    @PostMapping("/leave")
+    public TimeTrack saveLeavingTime(@RequestBody TimeTrack item) {
+        return manager.saveLeavingTime(item);
     }
 
     @DeleteMapping("/{id}")

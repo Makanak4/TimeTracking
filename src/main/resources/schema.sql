@@ -7,9 +7,9 @@ CREATE TABLE employees (
 
 CREATE TABLE time_tracking (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    date TEXT DEFAULT CURRENT_DATE,
+    date TEXT NOT NULL DEFAULT 0,
     id_employee INTEGER REFERENCES employees (id),
-    arrival_time TEXT DEFAULT CURRENT_TIME,
-    leaving_time TEXT DEFAULT CURRENT_TIME,
+    arrival_time TEXT NOT NULL DEFAULT 0,
+    leaving_time TEXT NOT NULL DEFAULT 0,
     hours_worked INTEGER CHECK ( hours_worked >= 0 )
 );

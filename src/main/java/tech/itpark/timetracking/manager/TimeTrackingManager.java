@@ -32,38 +32,31 @@ public class TimeTrackingManager {
         );
     }
 
-    public TimeTrack save(TimeTrack item) {
+    public TimeTrack saveArrivalTime(TimeTrack item) {
+        KeyHolder keyHolder = new GeneratedKeyHolder();
         if (item.getId() == 0) {
-            KeyHolder keyHolder = new GeneratedKeyHolder();
-
             template.update(
-                    "INSERT INTO time_tracking(date, id_employee, arrival_time, leaving_time, hours_worked) " +
-                            "VALUES (CURRENT_DATE, :id_employee, CURRENT_TIME, CURRENT_TIME, :hours_worked)",
+                    "INSERT INTO time_tracking(date, id_employee, arrival_time) " +
+                            "VALUES (CURRENT_DATE, :id_employee, CURRENT_TIME)",
                     new MapSqlParameterSource(Map.of(
-                            "date", item.getDate(),
-                            "id_employee", item.getId_employee(),
-                            "arrival_time", item.getArrival_time(),
-                            "leaving_time", item.getLeaving_time(),
-                            "hours_worked", item.getHours_worked()
+                            "id_employee", item.getId_employee()
                     )),
                     keyHolder
             );
-            long id = keyHolder.getKey().longValue();
-            return getById(id);
         }
-        template.update(
-                "UPDATE time_tracking " +
-                        "SET date = CURRENT_DATE, id_employee = :id_employee, arrival_time = CURRENT_TIME, leaving_time = CURRENT_TIME, hours_worked = :hours_worked " +
-                        "WHERE id = :id",
-                Map.of(
-                        "date", item.getDate(),
-                        "id_employee", item.getId_employee(),
-                        "arrival_time", item.getArrival_time(),
-                        "leaving_time", item.getLeaving_time(),
-                        "hours_worked", item.getHours_worked(),
-                        "id", item.getId()
-                )
-        );
+        long id = keyHolder.getKey().longValue();
+        return getById(id);
+    }
+
+    public TimeTrack saveLeavingTime(TimeTrack item) {
+        if (item.getId() != 0) {
+            template.update(
+                    "UPDATE time_tracking SET leaving_time = CURRENT_TIME WHERE id = :id",
+                    Map.of(
+                            "id", item.getId()
+                    )
+            );
+        }
         return getById(item.getId());
     }
 
