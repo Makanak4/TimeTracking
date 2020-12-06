@@ -1,0 +1,47 @@
+GET http://localhost:8080/employee
+
+###
+
+GET http://localhost:8080/employee/1
+
+###
+
+POST http://localhost:8080/employee
+Content-Type: application/json
+
+{
+  "id":0,
+  "name":"Pet",
+  "position":"Writer",
+  "clock_rate":160
+}
+
+###
+
+DELETE http://localhost:8080/employee/6
+
+###
+
+GET http://localhost:8080/timetrack
+
+###
+
+GET http://localhost:8080/timetrack/5
+
+###
+
+POST http://localhost:8080/timetrack
+Content-Type: application/json
+
+{
+  "id": 0,
+  "date": "CURRENT_DATE",
+  "id_employee": 5,
+  "arrival_time": "CURRENT_TIME",
+  "leaving_time": "CURRENT_TIME",
+  "hours_worked": 8
+}
+
+###
+
+DELETE http://localhost:8080/timetrack/5
