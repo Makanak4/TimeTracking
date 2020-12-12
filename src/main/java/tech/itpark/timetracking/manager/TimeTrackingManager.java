@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import tech.itpark.timetracking.mapper.TimeTrackRowMapper;
+import tech.itpark.timetracking.model.Employee;
 import tech.itpark.timetracking.model.TimeTrack;
 
 import java.util.List;
@@ -31,6 +32,16 @@ public class TimeTrackingManager {
                 rowMapper
         );
     }
+
+    public List<TimeTrack> search(long id_employee, String date) {
+        return template.query(
+                "SELECT id, date, id_employee, arrival_time, leaving_time, hours_worked FROM time_tracking WHERE id_employee = :id_employee AND date = :date",
+                Map.of("id_employee", id_employee, "date", date),
+                rowMapper
+        );
+    }
+
+
 
     public TimeTrack saveArrivalTime(TimeTrack item) {
         KeyHolder keyHolder = new GeneratedKeyHolder();

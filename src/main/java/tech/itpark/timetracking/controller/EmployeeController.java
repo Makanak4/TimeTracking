@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tech.itpark.timetracking.manager.EmployeeManager;
 import tech.itpark.timetracking.model.Employee;
+import tech.itpark.timetracking.model.TimeTrack;
 
 import java.util.List;
 
@@ -22,6 +23,11 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public Employee getById(@PathVariable long id) {
         return manager.getById(id);
+    }
+
+    @GetMapping("/search")
+    public List<Employee> search(@RequestParam String name) {
+        return manager.search(name);
     }
 
     @PostMapping

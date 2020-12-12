@@ -23,6 +23,11 @@ public class TimeTrackController {
         return manager.getById(id);
     }
 
+    @GetMapping("/search")
+    public List<TimeTrack> search(@RequestParam long id_employee, @RequestParam String date) {
+        return manager.search(id_employee, date);
+    }
+
     @PostMapping("/arrival")
     public TimeTrack saveArrivalTime(@RequestBody TimeTrack item) {
         return manager.saveArrivalTime(item);

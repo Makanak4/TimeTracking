@@ -8,6 +8,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import tech.itpark.timetracking.mapper.EmployeeRowMapper;
 import tech.itpark.timetracking.model.Employee;
+import tech.itpark.timetracking.model.TimeTrack;
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +30,14 @@ public class EmployeeManager {
     public Employee getById(long id) {
         return template.queryForObject("SELECT id, name, position, clock_rate FROM employees WHERE id = :id",
                 Map.of("id", id),
+                rowMapper
+        );
+    }
+
+    public List<Employee> search(String name) {
+        return template.query(
+                "SELECT id, name, position, clock_rate FROM employees WHERE name = :name",
+                Map.of("name", name),
                 rowMapper
         );
     }
