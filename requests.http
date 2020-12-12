@@ -1,0 +1,60 @@
+GET https://tttimetrack.herokuapp.com/employee
+
+###
+
+GET https://tttimetrack.herokuapp.com/employee/1
+
+###
+
+POST https://tttimetrack.herokuapp.com/employee
+Content-Type: application/json
+
+{
+  "id":0,
+  "name":"Pet",
+  "position":"Writer",
+  "clock_rate":160
+}
+
+###
+
+DELETE https://tttimetrack.herokuapp.com/employee/7
+
+###
+
+GET https://tttimetrack.herokuapp.com/employee/search?name=Maksim+Maksimov
+
+###
+
+GET https://tttimetrack.herokuapp.com/timetrack
+
+###
+
+GET https://tttimetrack.herokuapp.com/timetrack/6
+
+###
+
+POST https://tttimetrack.herokuapp.com/timetrack/arrival
+Content-Type: application/json
+
+{
+  "id": 0,
+  "id_employee": 5
+}
+
+###
+
+POST https://tttimetrack.herokuapp.com/timetrack/leave
+Content-Type: application/json
+
+{
+  "id": 6
+}
+
+###
+
+DELETE https://tttimetrack.herokuapp.com/timetrack/7
+
+###
+
+GET https://tttimetrack.herokuapp.com/timetrack/search?id_employee=5&date=2020-12-05
