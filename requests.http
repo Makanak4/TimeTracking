@@ -6,6 +6,10 @@ GET https://tttimetrack.herokuapp.com/employee/1
 
 ###
 
+GET https://tttimetrack.herokuapp.com/employee/search?name=Maksim+Maksimov
+
+###
+
 POST https://tttimetrack.herokuapp.com/employee
 Content-Type: application/json
 
@@ -19,10 +23,6 @@ Content-Type: application/json
 ###
 
 DELETE https://tttimetrack.herokuapp.com/employee/7
-
-###
-
-GET https://tttimetrack.herokuapp.com/employee/search?name=Maksim+Maksimov
 
 ###
 
