@@ -22,6 +22,18 @@ Content-Type: application/json
 
 ###
 
+POST https://tttimetrack.herokuapp.com/employee
+Content-Type: application/json
+
+{
+  "id":6,
+  "name":"Rick",
+  "position":"Writer",
+  "clock_rate":160
+}
+
+###
+
 DELETE https://tttimetrack.herokuapp.com/employee/7
 
 ###
